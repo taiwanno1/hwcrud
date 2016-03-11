@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :books
+
   get "welcome/say_hello" => "welcome#say"
   get "welcome" => "welcome#index"
   # The priority is based upon order of creation: first created -> highest priority.
