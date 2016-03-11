@@ -1,6 +1,6 @@
 class AddDateTimeColume < ActiveRecord::Migration
   def change
-    add_column :books, :publication_date, :string
-    add_column :books, :date_added, :string
+    add_column :books, :publication_date, :datetime
+    add_column :books, :date_added, :datetime
   end
 end

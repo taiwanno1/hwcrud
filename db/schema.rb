@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20160311031155) do
     t.integer  "isbn"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.string   "publication_date"
-    t.string   "date_added"
+    t.datetime "publication_date"
+    t.datetime "date_added"
   end
 
 end
