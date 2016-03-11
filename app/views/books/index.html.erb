@@ -1,0 +1,18 @@
+<h1>Books List</h1>
+
+<table class="table">
+  <% @books.each do |i|  %>
+    <tr>
+      <td><%= b.name %></td>
+      <td>
+        <%= link_to 'show', book_path(i), :class => "btn btn-primary" %>
+        <%= link_to 'edit', edit_book_path(i), :class => "btn btn-info" %>
+        <%= link_to 'delete', book_path(i), :method => :delete, :class => "btn btn-danger" %>
+      </td>
+    </tr>
+  <%end%>
+</table>
+
+<%= link_to 'New Book', new_book_path, :class => "btn btn-info" %>
+<%= paginate @books %>
+
