@@ -24,7 +24,27 @@ class BooksController < ApplicationController
     end
   end
 
+  def new
+    @book = Book.new
+  end
 
+  def create
+    @book = Book.new (book_params)
+
+    if @book.save
+      flash[:notice] = "Add new book!!!!!!!!!!!!!!!!!"
+      redirect_to books_path
+    else
+      render :action => :new
+    end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    flash[:alert] = "dare u kill me!!!!!!!"
+    @book.destroy
+    redirect_to books_path
+  end
 
 
 
