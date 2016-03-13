@@ -1,4 +1,4 @@
-<h1>Books List</h1>
+<h1>Book List</h1>
 
 <table class="table">
   <% @books.each do |i|  %>
@@ -13,6 +13,42 @@
   <%end%>
 </table>
 
-<%= link_to 'New Book', new_book_path, :class => "btn btn-info" %>
+<h2>Add new books here</h2>
 <%= paginate @books %>
 
+<%= form_for @book do |f| %>
+  <% if @book.errors.any? %>
+    <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <%end%>
+    </ul>
+  <%end%>
+
+  <div class="form-group">
+    <%= f.label :name, "Book's Title" %>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :isbn, "ISBN" %>
+    <%= f.number_field :isbn, :class => "form-control" %>
+  </div>
+
+  <div class="form-froup">
+    <%= f.label :publication_date, "publication_date" %>
+    <%= f.date_select :publication_date, :class => "form-control" %>
+  </div>
+
+  <div class="form-froup">
+    <%= f.label :date_added, "date_added" %>
+    <%= f.datetime_select :date_added, :class => "form-control" %>
+  </div>
+
+  <%= f.submit "Create", :class => "btn btn-primary" %>
+<% end %>

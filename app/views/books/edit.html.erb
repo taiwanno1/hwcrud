@@ -8,7 +8,7 @@
   <%end%>
 
   <div class="form-group">
-    <%= f.label :name, "Name" %>
+    <%= f.label :name, "Book's Title" %>
     <%= f.text_field :name, :class => "form-control" %>
   </div>
 
@@ -17,6 +17,22 @@
     <%= f.text_area :description, :class => "form-control" %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :isbn, "ISBN" %>
+    <%= f.number_field :isbn, :class => "form-control" %>
+  </div>
+
+  <div class="form-froup">
+    <%= f.label :publication_date, "publication_date" %>
+    <%= f.date_select :publication_date, :class => "form-control" %>
+  </div>
+
+  <div class="form-froup">
+    <%= f.label :date_added, "date_added" %>
+    <%= f.datetime_select :date_added, :class => "form-control" %>
+  </div>
+
   <%= f.submit "Update", :class => "btn btn-primary" %>
 
 <%end%>
+

@@ -1,23 +1,22 @@
 class BooksController < ApplicationController
 
-  def index
+  before_action :set_book, :only => [:show, :edit, :update, :destroy]
 
-    @books = Book.page(params[:page]).per(10)
+  def index
+    @books = Book.page(params[:page]).per(5)
+    @book = Book.new
   end
 
   def show
-    @book = Book.find(params[:id])
     @page_title = @book.name
   end
 
   def edit
-    @book = Book.find(params[:id])
   end
 
   def update
-    @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice] = "編輯成功˙ㄥ˙"
+      flash[:notice] = "編輯成功"
       redirect_to book_path(@book)
     else
       render :action => :edit
@@ -40,17 +39,20 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
     flash[:alert] = "dare u kill me!!!!!!!"
     @book.destroy
-    redirect_to books_path
+    redirect_to  books_path
   end
 
 
 
 private
   def book_params
-    params.require(:book).permit(:name, :description)
+    params.require(:book).permit(:name, :description, :isbn, :publicatino_date, :date_added)
+  end
+
+  def set_book
+    @book = Book.find(params[:id])
   end
 
 
